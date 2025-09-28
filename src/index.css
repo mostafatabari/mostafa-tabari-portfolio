@@ -1,0 +1,98 @@
+@import "tailwindcss";
+@tailwind utilities;
+@custom-variant dark (&:where(.dark, .dark *));
+
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200..1000&display=swap");
+
+:root {
+ --font-nunito: "Nunito", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+                 "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+                 "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  /* Colors */
+  --text-light: #111827;
+  --text-dark: #F9FAFB;
+  --bg-light: #FFFFFF;
+  --bg-dark: #111827;
+
+  --primary-light: #3B82F6;
+  --primary-dark: #60A5FA;
+  --secondary-light: #F9FAFB;
+  --secondary-dark: #1F2937;
+  --border-light: #E5E7EB;
+  --border-dark: #374151;
+  --accent-light: #3B82F6;
+  --accent-dark: #60A5FA;
+
+  /* Line-height */
+  --lh-h1: 1.2;
+  --lh-h2: 1.2;
+  --lh-h3: 1.3;
+  --lh-h4: 1.3;
+  --lh-body: 1.6;
+  --lh-caption: 1.4;
+  --lh-overline: 1.4;
+}
+
+/* Base styles */
+@layer base {
+  html, body {
+    font-family: var(--font-nunito);
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    background-color: var(--bg-light);
+    color: var(--text-light);
+  }
+
+  html.dark, body.dark {
+    background-color: var(--bg-dark);
+    color: var(--text-dark);
+  }
+}
+
+/* Typography (Responsive & Dark/Light) */
+@layer utilities {
+  .text-h1 { font-size: clamp(1.75rem, 2vw + 1rem, 3rem); line-height: var(--lh-h1); }
+  .text-h2 { font-size: clamp(1.5rem, 1.8vw + 0.9rem, 2.25rem); line-height: var(--lh-h2); }
+  .text-h3 { font-size: clamp(1.25rem, 1.5vw + 0.85rem, 1.875rem); line-height: var(--lh-h3); }
+  .text-h4 { font-size: clamp(1.125rem, 1.2vw + 0.8rem, 1.5rem); line-height: var(--lh-h4); }
+  .text-body { font-size: clamp(1rem, 1vw + 0.9rem, 1.125rem); line-height: var(--lh-body); }
+  .text-body-sm { font-size: clamp(0.875rem, 0.8vw + 0.8rem, 1rem); line-height: var(--lh-body); }
+  .text-caption { font-size: clamp(0.75rem, 0.7vw + 0.7rem, 0.875rem); line-height: var(--lh-caption); }
+  .text-overline { font-size: clamp(0.625rem, 0.6vw + 0.6vw, 0.75rem); line-height: var(--lh-overline); text-transform: uppercase; }
+  .placeholder-body::placeholder {font-size: clamp(1rem, 1vw + 0.9rem, 1.125rem); line-height: var(--lh-body);}
+}
+
+/* Background utility classes */
+@layer utilities {
+  .bg-primary { @apply bg-[var(--primary-light)] dark:bg-[var(--primary-dark)]; }
+  .bg-secondary { @apply bg-[var(--secondary-light)] dark:bg-[var(--secondary-dark)]; }
+  .bg-accent { @apply bg-[var(--accent-light)] dark:bg-[var(--accent-dark)]; }
+  .bg-border { @apply bg-[var(--border-light)] dark:bg-[var(--border-dark)]; }
+  .bg-light-sec { @apply bg-[var(--bg-light)] dark:bg-[var(--border-dark)]; }
+  .border-primary { @apply border-[var(--border-dark)] dark:border-[var(--border-light)]; }
+  .border-secondary { @apply border-[var(--border-light)] dark:border-[var(--border-dark)]; }
+    .border-secondary-sec { @apply border-[var(--border-light)] dark:border-[var(--secondary-dark)]; }
+  .bg-light { @apply bg-[var(--bg-light)] dark:bg-[var(--bg-dark)]; }
+}
+
+/* Text color utility classes */
+@layer utilities {
+  .text-primary { @apply text-[var(--text-light)] dark:text-[var(--text-dark)]; }
+  .text-secondary { @apply text-[#4B5563] dark:text-[#9CA3AF]; }
+  .text-disabled { @apply text-[#9CA3AF] dark:text-[#6B7280]; }
+  .text-accent { @apply text-[var(--accent-light)] dark:text-[var(--accent-dark)]; }
+  .text-error { @apply text-[#DC2626] dark:text-[#F87171]; }
+  .text-warning { @apply text-[#F59E0B] dark:text-[#FBBF24]; }
+  .text-success { @apply text-[#10B981] dark:text-[#34D399]; }
+  .text-white { @apply text-white dark:text-black; }
+  .text-black { @apply text-black dark:text-white; }
+}
+
+/* Example Input styling
+@layer components {
+  @apply ;
+} */
+
